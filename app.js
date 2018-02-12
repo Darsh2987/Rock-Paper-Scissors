@@ -1,17 +1,18 @@
 
-document.querySelector("h1").addEventListener("click", game);
+document.querySelector("h2").addEventListener("click", game);
 
 function game() {
 
   let playerScore = 0;
   let computerScore = 0;
   let draw = 0;
+  let gameCount = 0;
 
   /**
   * This generates a move from the CPU
   * @return {string} the CPU's choice
   */
-  function computerPlay() {
+  function computerSelection() {
     var number = Math.floor(Math.random() * 3) + 1;
 
     if (number === 1) {
@@ -30,46 +31,58 @@ function game() {
   */
   function playRound(player, computer) {
 
-    // I want to see what the comp chose (for debugging)
     console.log(`computer chose ${computer}`);
+    console.log(`player chose ${player}`);
 
-    if (player === "rock" && computer === "paper") {
-      console.log("You Lose! Paper beats Rock");
-      computerScore++;
-
-    } else if (player === "rock" && computer === "scissors") {
-      console.log("You Win! Rock beats Scissors");
-      playerScore++;
-
-    } else if (player === computer) {
-      console.log("Draw!");
-      draw++;
-
-    } else if (player === "paper" && computer === "rock" ) {
-      console.log("You Win! Paper beats Rock");
-      playerScore++;
-
-    } else if (player === "paper" && computer === "scissors") {
-      console.log("You Lose! Scissors beats Paper");
-      computerScore++;
-
-    } else if (player === "scissors" && computer === "rock") {
-      console.log("You Lose! Rock beats Scissors");
-      computerScore++;
-
-    } else if (player === "scissors" && computer === "paper") {
-      console.log("You Win! Scissors beats Paper");
-      playerScore++;
-
+    switch(true) {
+      case player === "rock" && computer === "paper":
+        console.log("You Lose! Paper beats Rock");
+        computerScore++;
+        break;
+      case player === "rock" && computer === "scissors":
+        console.log("You Win! Rock beats Scissors");
+        playerScore++;
+        break;
+      case player === "paper" && computer === "rock":
+        console.log("You Win! Paper beats Rock");
+        playerScore++;
+        break;
+      case player === "paper" && computer === "scissors":
+        console.log("You Lose! Scissors beats Paper");
+        computerScore++;
+        break;
+      case player === "scissors" && computer === "rock":
+        console.log("You Lose! Rock beats Scissors");
+        computerScore++;
+        break;
+      case player === "scissors" && computer === "paper":
+        console.log("You Win! Scissors beats Paper");
+        playerScore++;
+        break;
+      case player === computer:
+        console.log("Draw!");
+        draw++;
     }
   };
 
-  let gameCount = 0;
+  // Player Selection function with validation if player input is not either rock, paper or scissors.
+  function playerSelection() {
+    const selection = prompt('Type Rock, Paper or Scissors').toLowerCase();
 
+    if (selection !== 'rock' && selection !== 'paper' && selection !== 'scissors') {
+        console.log('Invalid selection, please type either "Rock", "Paper", or "Scissors"');
+        playerSelection();
+      } else {
+      return selection;
+    };
+  };
+
+
+
+  // While loop to play 5 round of the game.
   while(gameCount < 5) {
-    const player = prompt('Type Rock, Paper or Scissors').toLowerCase();
-
-    const computer = computerPlay();
+    const player = playerSelection();
+    const computer = computerSelection();
     playRound(player, computer);
     gameCount++
 
@@ -78,9 +91,8 @@ function game() {
     console.log("draws " + draw);
     console.log("game round " + gameCount + '\n');
   };
-
-  console.log("player score = " + playerScore);
-  console.log("computer score = " + computerScore);
-  console.log("draws " + draw);
-  console.log("game round " + gameCount + '\n');
+  console.log("total player score = " + playerScore);
+  console.log("total computer score = " + computerScore);
+  console.log("total draws " + draw);
+  console.log("total game round " + gameCount + '\n');
 };
