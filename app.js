@@ -7,6 +7,10 @@ function game() {
   let computerScore = 0;
   let draw = 0;
 
+  /**
+  * This generates a move from the CPU
+  * @return {string} the CPU's choice
+  */
   function computerPlay() {
     var number = Math.floor(Math.random() * 3) + 1;
 
@@ -19,7 +23,15 @@ function game() {
     }
   };
 
+  /**
+  * This is the main function which takes 2 string values and compares them.
+  * @param {string} player
+  * @param {string} computer
+  */
   function playRound(player, computer) {
+
+    // I want to see what the comp chose (for debugging)
+    console.log(`computer chose ${computer}`);
 
     if (player === "rock" && computer === "paper") {
       console.log("You Lose! Paper beats Rock");
@@ -29,7 +41,7 @@ function game() {
       console.log("You Win! Rock beats Scissors");
       playerScore++;
 
-    } else if (player === "rock" && computer === "rock") {
+    } else if (player === computer) {
       console.log("Draw!");
       draw++;
 
@@ -41,10 +53,6 @@ function game() {
       console.log("You Lose! Scissors beats Paper");
       computerScore++;
 
-    } else if (player === "paper" && computer === "paper") {
-      console.log("Draw!");
-      draw++;
-
     } else if (player === "scissors" && computer === "rock") {
       console.log("You Lose! Rock beats Scissors");
       computerScore++;
@@ -53,9 +61,6 @@ function game() {
       console.log("You Win! Scissors beats Paper");
       playerScore++;
 
-    } else if (player === "scissors" && computer === "scissors") {
-      console.log("Draw!");
-      draw++;
     }
   };
 
@@ -71,11 +76,11 @@ function game() {
     console.log("player score = " + playerScore);
     console.log("computer score = " + computerScore);
     console.log("draws " + draw);
-    console.log("game round " + gameCount);
+    console.log("game round " + gameCount + '\n');
   };
 
   console.log("player score = " + playerScore);
   console.log("computer score = " + computerScore);
   console.log("draws " + draw);
-  console.log("game round " + gameCount);
+  console.log("game round " + gameCount + '\n');
 };
