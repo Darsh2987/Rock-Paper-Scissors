@@ -54,31 +54,7 @@ function game() {
   */
   function playRound(playerSelection, computerSelection) {
 
-    const gameRound = document.createElement("ul");
-    gameRound.className = "gameRound";
-    roundResults.appendChild(gameRound);
-
-    const roundNum = `Game round ${gameCount}`;
-    const roundNumLi = document.createElement("li");
-    roundNumLi.className = "game-round";
-    roundNumLi.textContent = roundNum;
-    gameRound.appendChild(roundNumLi);
-
-    const playerChoice = `You chose ${playerSelection}`;
-    const playerLi = document.createElement("li");
-    playerLi.className = "Players-choice";
-    playerLi.textContent = playerChoice;
-    gameRound.appendChild(playerLi);
-
-    const computerChoice = `The computer chose ${computerSelection}`;
-    const computerLi = document.createElement("li");
-    computerLi.className = "computers-choice";
-    computerLi.textContent = computerChoice;
-    gameRound.appendChild(computerLi);
-
     const roundOutcomeLi = document.createElement("li");
-    roundOutcomeLi.className = "round-outcome";
-    gameRound.appendChild(roundOutcomeLi);
 
     switch(true) {
       case playerSelection === "rock" && computerSelection === "paper":
@@ -116,6 +92,31 @@ function game() {
         roundOutcomeLi.textContent = "You both chose the same item, your both loser's";
         draw++;
     }
+
+    const gameRound = document.createElement("ul");
+    gameRound.className = "gameRound";
+    roundResults.appendChild(gameRound);
+
+    const roundNum = `Game round ${gameCount}`;
+    const roundNumLi = document.createElement("li");
+    roundNumLi.className = "game-round";
+    roundNumLi.textContent = roundNum;
+    gameRound.appendChild(roundNumLi);
+
+    const playerChoice = `You chose ${playerSelection}`;
+    const playerLi = document.createElement("li");
+    playerLi.className = "Players-choice";
+    playerLi.textContent = playerChoice;
+    gameRound.appendChild(playerLi);
+
+    const computerChoice = `The computer chose ${computerSelection}`;
+    const computerLi = document.createElement("li");
+    computerLi.className = "computers-choice";
+    computerLi.textContent = computerChoice;
+    gameRound.appendChild(computerLi);
+
+    roundOutcomeLi.className = "round-outcome";
+    gameRound.appendChild(roundOutcomeLi);
 
     const player_Score = `Your score = ${playerScore}`;
     const player_ScoreLi = document.createElement("li");
