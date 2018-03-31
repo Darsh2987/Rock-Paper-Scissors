@@ -1,0 +1,27 @@
+
+h1 {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+li {
+  list-style: none;
+}
+
+.play {
+  cursor: pointer;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.result-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gameRound {
+  display: inline-block;
+  margin: 0 0 2rem 0;
+}
