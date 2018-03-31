@@ -1,5 +1,5 @@
 
-document.querySelector("h2").addEventListener("click", game);
+document.querySelector(".play").addEventListener("click", game);
 
 function game() {
 
@@ -89,7 +89,7 @@ function game() {
         break;
       case playerSelection === computerSelection:
         console.log("Draw!");
-        roundOutcomeLi.textContent = "You both chose the same item, your both loser's";
+        roundOutcomeLi.textContent = "You both chose the same item, it's a tie";
         draw++;
     }
 
